@@ -1,0 +1,58 @@
+{
+  "name": "tree-sitter-ergoscript",
+  "version": "0.1.0",
+  "description": "ErgoScript grammar for tree-sitter",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "ergoscript",
+    "ergo"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "author": "ErgoScript Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tree-sitter generate && tree-sitter build --wasm",
+    "generate": "tree-sitter generate",
+    "playground": "tree-sitter playground",
+    "test": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.ergoscript",
+      "file-types": [
+        "es",
+        "ergo",
+        "ergoscript"
+      ],
+      "injection-regex": "^(ergoscript|ergo)$"
+    }
+  ]
+}
